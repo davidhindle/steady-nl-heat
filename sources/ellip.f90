@@ -67,7 +67,7 @@ read (12,*) dx
 dx2=dx**2
 read (12,*) bc1
 read (12,*) bc2
-read (12,*) lc
+!read (12,*) lc
 read (12,*) kon
 allocate (k1(kon),kdn(kon+1),ao(kon))
 kdn(1)=1
@@ -173,45 +173,45 @@ trj=tr1
 ! b for temperature has a jump at the depth of the top of the lower crust
 ! ------------------------------------------------------------------------------
 
-iter = 10.d0
-do while (iter.gt.tol)
-    c=1.5d-6
-    b=1.5d-3
-    do i=1,nsub
-     depth=dx*(i-1)  
-      if (depth.gt.lc) then
-       b=1.d-4
-      end if
-     D(i) = ko(i)*(1+(c*dx*(i-1)))/(1+b*(tr(i)-273.d0))
-    end do
+!iter = 10.d0
+!do while (iter.gt.tol)
+!    c=1.5d-6
+!    b=1.5d-3
+!    do i=1,nsub
+!     depth=dx*(i-1)  
+!      if (depth.gt.lc) then
+!       b=1.d-4
+!      end if
+!     D(i) = ko(i)*(1+(c*dx*(i-1)))/(1+b*(tr(i)-273.d0))
+!    end do
 
-  D(nsub)=D(nsub-1)
+!  D(nsub)=D(nsub-1)
 
 !  q is the source terms and boundary conditions
 
-  call matrix(D,nsub,bckind,dx,bc1,bc2,ao,q,p1,p2,p3)
+!  call matrix(D,nsub,bckind,dx,bc1,bc2,ao,q,p1,p2,p3)
 
 !   initial solve of system 
 !   solve system using tridiagonal matrix algorithm
-    call tri(nsub,p1,p2,p3,q,tr1) !n,a,b,c,q,u
-    diff=abs(tr1-tr)
-    tr(1:nsub)=tr1(1:nsub)
-    iter=sum(diff)
-    print *, 'chapman convergence ', iter
+!    call tri(nsub,p1,p2,p3,q,tr1) !n,a,b,c,q,u
+!    diff=abs(tr1-tr)
+!    tr(1:nsub)=tr1(1:nsub)
+!    iter=sum(diff)
+!    print *, 'chapman convergence ', iter
     
-end do    
+!end do    
 
 ! store solution as trc
-do i=2,nsub-1
-  hf(i)=((D(i+1)+D(i)+D(i-1))/3.d0) * (tr1(i+1) - tr1(i-1))/(2.d0*dx)
-end do
-hf(1)=hf(2)
-hf(nsub)=hf(nsub-1)
-dc=D
-D=zero
-hfc=hf
-hf=zero
-trc = tr1
+!do i=2,nsub-1
+!  hf(i)=((D(i+1)+D(i)+D(i-1))/3.d0) * (tr1(i+1) - tr1(i-1))/(2.d0*dx)
+!end do
+!hf(1)=hf(2)
+!hf(nsub)=hf(nsub-1)
+!dc=D
+!D=zero
+!hfc=hf
+!hf=zero
+!trc = tr1
 
 ! write results
 ! -----------------------------------------------------------------------------
@@ -222,9 +222,9 @@ trc = tr1
     i=1
 
  200 continue
-    write (15, '(4(1pe16.7))') dx*(i-1)/1000, hfo(i), hfj(i), hfc(i)    
-    write (14,'(4(1pe16.7))') dx*(i-1)/1000, tro(i) -273.d0, trj(i) -273.d0, trc(i)-273.d0
-    write (13, '(4(1pe16.7))') dx*(i-1)/1000, D0(i), dj(i), dc(i)       
+    write (15, '(4(1pe16.7))') dx*(i-1)/1000, hfo(i), hfj(i)    
+    write (14,'(4(1pe16.7))') dx*(i-1)/1000, tro(i) -273.d0, trj(i) -273.d0
+    write (13, '(4(1pe16.7))') dx*(i-1)/1000, D0(i), dj(i)       
     i=i+1
     if (i.lt.nsub+1) then
       goto 200

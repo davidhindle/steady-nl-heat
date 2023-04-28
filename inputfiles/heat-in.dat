@@ -5,7 +5,6 @@ false		    # bckind - heat flow boundary condition at base (true or false: if tr
 100                 # dx = grid spacing in metres
 10		    # bc1 - surface temperature bc °C
 1300                # bc2 - base of lithosphere bc (depends on neumann true (hf) or false (fixed temp °C))
-25000               # lc - lower crust depth = change in temperature dependence of K for Chapman algorithm.
 4                   # ko(n) - number of layers (integer) (ko(n))
 2.3  4.01d-6 10000  # layer thermal cond, ko; radiogenic heat, ao; depth to base of layer (metres)
 2.5  2.d-6   25000  # must be as many layers (line by line) as given for ko(n) above)
