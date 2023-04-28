@@ -1,5 +1,5 @@
 # steady-nl-heat
-[![DOI](https://sandbox.zenodo.org/badge/633796407.svg)](https://sandbox.zenodo.org/badge/latestdoi/633796407)
+[![DOI](https://zenodo.org/badge/633796407.svg)](https://zenodo.org/badge/latestdoi/633796407)
 ## Introduction
 
 ellip is a fortran 90 code, consisting of a main code, and 2 modules, which implements the half station discretisation of the 1 dimensional, non-linear (temperature dependent thermal conductivity) steady state heat flow equation with a variable coefficient. 
@@ -63,7 +63,7 @@ output is in text file format. The accompanying python script pyplot.py will pro
 
 This notebook has been published at Zenodo. Please cite the following reference if you publish any work that uses this notebook:
 
-[![DOI](https://sandbox.zenodo.org/badge/633796407.svg)](https://sandbox.zenodo.org/badge/latestdoi/633796407)
+[![DOI](https://zenodo.org/badge/633796407.svg)](https://zenodo.org/badge/latestdoi/633796407)
 
 
 ## License
