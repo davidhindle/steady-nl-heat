@@ -1,0 +1,15 @@
+true               # radiative - radiative heat modification of thermal conductivity (> 1000°K), true or false
+false		    # bckind - heat flow boundary condition at base (true or false: if true, hf +ve = flow into model; false = fixed temp)
+1.d0		    # tol - iteration convergence value lower values = more precise convergence but slower
+1000.0d0              # kr - temperature cutoff °K for radiative component of thermal conducitivtiy
+100                 # dx = grid spacing in metres
+10		    # bc1 - surface temperature bc °C
+1300                # bc2 - base of lithosphere bc (depends on neumann true (hf) or false (fixed temp °C))
+25000               # lc - lower crust depth = change in temperature dependence of K for Chapman algorithm.
+4                   # ko(n) - number of layers (integer) (ko(n))
+2.3  4.01d-6 10000  # layer thermal cond, ko; radiogenic heat, ao; depth to base of layer (metres)
+2.5  2.d-6   25000  # must be as many layers (line by line) as given for ko(n) above)
+2.6  0.4d-6  50000
+3.4  0.02d-6 150000
+# as of here, program will not read further so all lines here and below are ignored
+
